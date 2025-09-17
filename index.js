@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const userRouter = require("./features/auth/routes/userRoute");
 const productRouter = require("./features/products/routes/productRoute");
 const cartRouter = require("./features/cart/routes/cartRouter");
@@ -8,6 +9,10 @@ require("dotenv").config();
 
 const PORT = process.env.PORT || 3333;
 const app = express();
+
+// Enable CORS for all routes
+app.use(cors());
+
 app.use(express.json());
 app.use("/api/v1/e-stores/users", userRouter);
 app.use("/api/v1/e-stores/products", productRouter);
